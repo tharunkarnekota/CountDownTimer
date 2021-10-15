@@ -2,8 +2,11 @@ import React,{useState,useEffect} from 'react'
 import Display from './Display'
 
 const App = () =>{
+  const [hrs,setHrs] = useState("")
+  const [mins,setMins] = useState("")
+  const [secs,setSecs] = useState("")
   const [userdate,setUserdate] = useState("")
-  const endTime = new Date(userdate +' 00:00:00').getTime();
+  const endTime = new Date(userdate +' '+hrs+':'+mins+':'+secs).getTime();
   const [currentTime,setcurrentTime] = useState(new Date().getTime());
   const gap = endTime - currentTime  //177670892  gap will be in milliseconds
 
@@ -23,16 +26,16 @@ const App = () =>{
     setTimeout(()=>setcurrentTime(new Date().getTime()),1000)
   },[currentTime])
   
-  if(gap<=0){
-    alert('Offer Ended')
-    // return <Redirect to={home} /> install react-router-dom
-  }
-
+  
 return (
   <div>
     <center>
 
-      <br /><br />
+      <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <input type="text" size="10" placeholder="hour[24]" onChange={e => setHrs(e.target.value)} value={hrs} /> &nbsp;&nbsp;
+        <input type="text" size="10" placeholder="minutes" onChange={e => setMins(e.target.value)} value={mins} /> &nbsp;&nbsp;
+        <input type="text" size="10" placeholder="seconds" onChange={e => setSecs(e.target.value)} value={secs} /> &nbsp;&nbsp;  <br /><br />
       
         <input type="text" size="50" placeholder="mm dd yyyy" name="userdate" onChange={ e => setUserdate(e.target.value)} /><br />
         <h2>Enter Date to start timer</h2>
