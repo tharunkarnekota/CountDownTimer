@@ -2,8 +2,7 @@ import React,{useState,useEffect} from 'react'
 import Display from './Display'
 
 const App = () =>{
-  const [userdate,setUserdate] = useState("")
-  const endTime = new Date(userdate +' 00:00:00').getTime();
+  const endTime = new Date('september 25,2021 00:00:00').getTime();
   const [currentTime,setcurrentTime] = useState(new Date().getTime());
   const gap = endTime - currentTime  //177670892  gap will be in milliseconds
 
@@ -23,28 +22,17 @@ const App = () =>{
     setTimeout(()=>setcurrentTime(new Date().getTime()),1000)
   },[currentTime])
   
-  if(gap<=0){
-    alert('Offer Ended')
-    // return <Redirect to={home} /> install react-router-dom
-  }
+
 
 return (
   <div>
     <center>
-
-      <br /><br />
-      
-        <input type="text" size="50" placeholder="mm dd yyyy" name="userdate" onChange={ e => setUserdate(e.target.value)} /><br />
-        <h2>Enter Date to start timer</h2>
-        
-      <br /><br />
 
       <Display days={remainingdays}
                hours={remainingHours}
                minutes={remainingMinutes}
                seconds={remainingSeconds} />
 
-     
     </center>
   </div>
 )

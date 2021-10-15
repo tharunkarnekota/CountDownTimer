@@ -43,8 +43,7 @@ return (
                hours={remainingHours}
                minutes={remainingMinutes}
                seconds={remainingSeconds} />
-
-     
+                  
     </center>
   </div>
 )
